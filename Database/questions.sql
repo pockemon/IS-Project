@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 11, 2018 at 06:18 PM
+-- Generation Time: Apr 09, 2019 at 05:34 AM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 7.2.8
 
@@ -39,7 +39,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`admin_id`, `user`, `pass`) VALUES
-(1, 'admin@gmail.com', 'admin');
+(1, 'admin@gmail.com', 'admin123');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,10 @@ INSERT INTO `answers_table` (`answer_id`, `Q_id`, `answer`, `answered_by`) VALUE
 (4, 1, 'answer1', 'stu'),
 (5, 2, 'This is the answer for question-2', 'Pawan'),
 (6, 2, 'oooo', 'hardik'),
-(7, 3, 'Answer3', 'Chetan');
+(7, 3, 'Answer3', 'Chetan'),
+(8, 4, 'FACK is not there in ns-3 as of now and SACK is by default on in ns-3 but you can use the following command to enable or disable SACK in ns-3:\r\n\r\n Config::SetDefault (\"ns3::TcpSocketBase::Sack\", BooleanValue (isSack));\r\nwhere isSack is a boolean variable which can be set to true or false accordingly.', 'Mishal'),
+(9, 4, 'answer4', 'Hardik'),
+(10, 6, 'fq_codel is basically a fair queing delay,which is used for fairness in tcp networks.', 'Mr.Mohit');
 
 -- --------------------------------------------------------
 
@@ -85,7 +88,17 @@ CREATE TABLE `attendance` (
 --
 
 INSERT INTO `attendance` (`stud_id`, `course_id`, `date`, `status`) VALUES
-(4, 'CO313', '2018-11-11', 'Present');
+(4, 'CO313', '2018-11-11', 'Present'),
+(4, 'CO368', '2018-11-11', 'Present'),
+(10, 'CO400', '2018-11-11', 'Present'),
+(10, 'CO400', '2018-11-12', 'Absent'),
+(4, 'CO313', '2018-11-14', 'Present'),
+(11, 'CO313', '2018-11-14', 'Present'),
+(12, 'CO365', '2019-02-28', 'Present'),
+(13, 'CO365', '2019-02-28', 'Absent'),
+(12, 'CO365', '2019-02-27', 'Present'),
+(13, 'CO365', '2019-02-27', 'Present'),
+(13, 'CO360', '2019-02-28', 'Present');
 
 -- --------------------------------------------------------
 
@@ -134,9 +147,23 @@ CREATE TABLE `course_registration` (
 INSERT INTO `course_registration` (`student_id`, `name`, `course_id`, `course_name`, `teacher_id`, `teacher_name`, `status`) VALUES
 (4, ' Hardik', 'CO313', 'Number Therory', 5, 'Mr.Brc', 'Accepted'),
 (4, ' Hardik', 'CO316', 'Computer Architecture Lab', 7, 'Mr.Basvaraj Talwar', 'Pending'),
-(4, ' Hardik', 'CO368', 'Internet technology and applic', 8, 'Mrs.Saumya Hegde', 'Pending'),
-(4, ' Hardik', 'CO300', 'Computer Networks', 9, 'Mr.Mohit tahiliani', 'Pending'),
-(4, ' Hardik', 'CO301', 'DBMS', 10, 'M. Venkatesan', 'Pending');
+(4, ' Hardik', 'CO368', 'Internet technology and applic', 8, 'Mrs.Saumya Hegde', 'Accepted'),
+(4, ' Hardik', 'CO300', 'Computer Networks', 9, 'Mr.Mohit tahiliani', 'Rejected'),
+(4, ' Hardik', 'CO301', 'DBMS', 10, 'M. Venkatesan', 'Pending'),
+(10, ' Mishal shah', 'CO313', 'Number Therory', 5, 'Mr.Brc', 'Pending'),
+(10, ' Mishal shah', 'CO316', 'Computer Architecture Lab', 7, 'Mr.Basvaraj Talwar', 'Pending'),
+(10, ' Mishal shah', 'CO368', 'Internet technology and applic', 8, 'Mrs.Saumya Hegde', 'Pending'),
+(10, ' Mishal shah', 'CO300', 'Computer Networks', 9, 'Mr.Mohit tahiliani', 'Pending'),
+(10, ' Mishal shah', 'CO301', 'DBMS', 10, 'M. Venkatesan', 'Pending'),
+(10, ' Mishal shah', 'CO400', 'Computer Graphics', 15, 'Mr.Shashidhar', 'Accepted'),
+(4, ' Hardik', 'CO400', 'Computer Graphics', 15, 'Mr.Shashidhar', 'Accepted'),
+(11, ' student1', 'CO313', 'Number Therory', 5, 'Mr.Brc', 'Accepted'),
+(12, ' Harshal Shinde', 'CO365', 'Advance Data Structures', 11, 'Mr.Mohit tahiliani', 'Accepted'),
+(12, ' Harshal Shinde', 'CO352', 'Computer Graphics', 13, 'Mr.Shashidhar k', 'Rejected'),
+(12, ' Harshal Shinde', 'CO360', 'Advance Data Structures', 14, 'Miss.Vani M', 'Rejected'),
+(13, ' xyx', 'CO365', 'Advance Data Structures', 11, 'Mr.Mohit tahiliani', 'Accepted'),
+(13, ' xyx', 'CO352', 'Computer Graphics', 13, 'Mr.Shashidhar k', 'Rejected'),
+(13, ' xyx', 'CO360', 'Advance Data Structures', 14, 'Miss.Vani M', 'Accepted');
 
 -- --------------------------------------------------------
 
@@ -165,11 +192,14 @@ CREATE TABLE `faculty` (
 --
 
 INSERT INTO `faculty` (`id`, `user_alias`, `Name`, `designation`, `programme`, `semester`, `email`, `password`, `mobile`, `date`, `status`, `course_name`, `course_code`) VALUES
-(5, 'Mr.B1112', 'Mr.Brc', 'Professor', 'B.Tech', 'v', 'brc@gmail.com', '123456', 1112223334, '2018-10-27 09:21:50', 0, 'Number Therory', 'CO313'),
-(7, 'Mr.B1112', 'Mr.Basvaraj Talwar', 'Professor', 'B.Tech', 'v', 'bt@gmail.com', '123456', 1112222333, '2018-11-02 18:28:59', 0, 'Computer Architecture Lab', 'CO316'),
-(8, 'Mrs.1112', 'Mrs.Saumya Hegde', 'Professor', 'B.Tech', 'v', 'sm@gmail.com', '123456', 1112223334, '2018-11-02 18:30:33', 0, 'Internet technology and applic', 'CO368'),
-(9, 'Mr.M1112', 'Mr.Mohit tahiliani', 'Professor', 'M.Tech', 'v', 'mohit@gmail.com', '123456', 1112223334, '2018-11-02 18:31:22', 0, 'Computer Networks', 'CO300'),
-(10, 'M. V1112', 'M. Venkatesan', 'Professor', 'B.Tech', 'v', 'mv@gmail.com', '123456', 1112223333, '2018-11-02 18:33:25', 0, 'DBMS', 'CO301');
+(5, 'Mr.B1112', 'Mr.Brc', 'Professor', 'B.Tech', 'v', 'brc@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, '2018-10-27 09:21:50', 0, 'Number Therory', 'CO313'),
+(7, 'Mr.B1112', 'Mr.Basvaraj Talwar', 'Professor', 'B.Tech', 'v', 'bt@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112222333, '2018-11-02 18:28:59', 0, 'Computer Architecture Lab', 'CO316'),
+(8, 'Mrs.1112', 'Mrs.Saumya Hegde', 'Professor', 'B.Tech', 'v', 'sm@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, '2018-11-02 18:30:33', 0, 'Internet technology and applic', 'CO368'),
+(10, 'M. V1112', 'M. Venkatesan', 'Professor', 'B.Tech', 'v', 'mv@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223333, '2018-11-02 18:33:25', 0, 'DBMS', 'CO301'),
+(11, 'Mr.M1112', 'Mr.Mohit tahiliani', 'Professor', 'B.Tech', 'vi', 'mohit@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, '2019-02-28 12:14:25', 0, 'Advance Computer Networks', 'CO365'),
+(13, 'Mr.S1112', 'Mr.Shashidhar k', 'Professor', 'B.Tech', 'vi', 's@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, '2019-02-28 12:16:07', 0, 'Computer Graphics', 'CO352'),
+(14, 'Miss1112', 'Miss.Vani M', 'Professor', 'B.Tech', 'vi', 'v@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, '2019-02-28 12:16:52', 0, 'Advance Data Structures', 'CO360'),
+(18, 'Anap1112', 'Anappa', 'Professor', 'MCA', 'i', 'a@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, '2019-04-09 04:03:40', 0, 'Computer Graphics', 'CO352');
 
 -- --------------------------------------------------------
 
@@ -206,7 +236,49 @@ INSERT INTO `feedback` (`id`, `student_id`, `faculty_id`, `Teacher provided the 
 (1, 'h@gmail.com', 'bt@gmail.com', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '                                            Good', '0', '2018-10-18'),
 (2, 'hardikrana276@gmail.com', 'bt@gmail.com', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '                                            Everything', '0', '2018-10-23'),
 (3, 'hardikrana276@gmail.com', 'brc@gmail.com', '5', '5', '5', '5', '5', '5', '5', '5', '4', '4', '4', '4', '                                            Good', '                                            None', '2018-10-23'),
-(4, 'sh@gmail.com', 'brc@gmail.com', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '                                            None', '                                            None', '2018-11-05');
+(4, 'sh@gmail.com', 'brc@gmail.com', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '3', '                                            None', '                                            None', '2018-11-05'),
+(5, 'mishal@gmail.com', 's1@gmail.com', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '                                            Everything', '                                            None', '2018-11-12'),
+(6, 'stu@gmail.com', 'brc@gmail.com', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '5', '                                            Evrything', '                                            None', '2018-11-14'),
+(7, 'hsharshal9@gmail.com', 'mohit@gmail.com', '5', '5', '4', '4', '4', '4', '4', '4', '4', '4', '4', '4', '                                            Everything', '                                            None\r\n', '2019-02-28');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `permissions`
+--
+
+CREATE TABLE `permissions` (
+  `perm_id` int(10) UNSIGNED NOT NULL,
+  `perm_desc` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `permissions`
+--
+
+INSERT INTO `permissions` (`perm_id`, `perm_desc`) VALUES
+(1, 'View_Profile'),
+(2, 'Update_Password'),
+(3, 'CourseR'),
+(4, 'Q-A_forum'),
+(5, 'Ask_Question'),
+(6, 'View_Material'),
+(7, 'Upload_Assignment'),
+(8, 'View_submission'),
+(9, 'Feedback'),
+(10, 'Update_ProfileT'),
+(11, 'Course_RegT'),
+(12, 'AttT'),
+(13, 'TeaVT'),
+(14, 'ForumT'),
+(15, 'UploadT'),
+(16, 'ViewT'),
+(17, 'FeedbackT'),
+(18, 'Add_facA'),
+(19, 'Show_facA'),
+(20, 'FeedbackA'),
+(21, 'Feedback_avgA'),
+(22, 'Dis_stuA');
 
 -- --------------------------------------------------------
 
@@ -227,7 +299,69 @@ CREATE TABLE `question_table` (
 INSERT INTO `question_table` (`Q_id`, `Question`, `User_id`) VALUES
 (1, 'why packet switching is more efficient than circuit switching? ', 0),
 (2, 'When a packet is sent, a destination port number generally a well known port say 80 for a http connection, is sent. How does the server decide which process is to be allotted to this incoming connection request? Are all the processes on a web server the s', 0),
-(3, 'Due to the way NetCut works, no firewall is able to prevent nor even detect the attack. In fact setting up static ARP entries like most other websites suggested will not protect you against NetCut attacks because NetCut directly attacks the gateway and not the user.\r\n\r\nQ. What does this mean?Is this true? If so, why will a static ARP table not work?\r\n\r\nLink :https://www.raymond.cc/blog/protect-your-computer-against-arp-poison-attack-netcut/', 0);
+(3, 'Due to the way NetCut works, no firewall is able to prevent nor even detect the attack. In fact setting up static ARP entries like most other websites suggested will not protect you against NetCut attacks because NetCut directly attacks the gateway and not the user.\r\n\r\nQ. What does this mean?Is this true? If so, why will a static ARP table not work?\r\n\r\nLink :https://www.raymond.cc/blog/protect-your-computer-against-arp-poison-attack-netcut/', 0),
+(4, 'How to enable fack,sack in dce?', 10),
+(5, 'question5', 11),
+(6, 'What is fq_codel? How it is different from Codel?', 12);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `roles`
+--
+
+CREATE TABLE `roles` (
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `role_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `roles`
+--
+
+INSERT INTO `roles` (`role_id`, `role_name`) VALUES
+(1, 'student'),
+(2, 'Teacher'),
+(3, 'Admin');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `role_perm`
+--
+
+CREATE TABLE `role_perm` (
+  `role_id` int(10) UNSIGNED NOT NULL,
+  `perm_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `role_perm`
+--
+
+INSERT INTO `role_perm` (`role_id`, `perm_id`) VALUES
+(1, 1),
+(1, 2),
+(1, 3),
+(1, 4),
+(1, 5),
+(1, 6),
+(1, 7),
+(1, 8),
+(1, 9),
+(2, 10),
+(2, 11),
+(2, 12),
+(2, 13),
+(2, 14),
+(2, 15),
+(2, 16),
+(2, 17),
+(3, 18),
+(3, 19),
+(3, 20),
+(3, 21),
+(3, 22);
 
 -- --------------------------------------------------------
 
@@ -247,10 +381,8 @@ CREATE TABLE `uploads` (
 
 INSERT INTO `uploads` (`upload_id`, `file_address`, `user_id`) VALUES
 (10, '../upload_fac/Intern 411.pdf', 'brc@gmail.com'),
-(11, '../upload_fac/Student Registration.pdf', 'brc@gmail.com'),
-(12, '../upload_fac/5-OpenMP.pdf', 'bt@gmail.com'),
-(13, '../upload_fac/6-MPI.pdf', 'bt@gmail.com'),
-(14, '../upload_fac/CoursePlanCO300.pdf', 'sm@gmail.com');
+(15, '../upload_fac/5-OpenMP.pdf', 's1@gmail.com'),
+(16, '../upload_fac/6-MPI.pdf', 'brc@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -275,7 +407,9 @@ INSERT INTO `uploads_stu` (`upload_id`, `file_address`, `fac_id`, `user_id`, `co
 (1, '../upload_stu/Proposal Report-16CO138-16CO223.pdf', 'brc@gmail.com', 'cr@gmail.com', 'CO313', 'v'),
 (2, '../upload_stu/A2-16CO138-16CO223.pdf', 'bt@gmail.com', 'hardikrana276@gmail.com', 'CO368', 'v'),
 (3, '../upload_stu/A6-16CO138-16CO223.pdf', 'bt@gmail.com', 'bobbypt05@gmail.com', 'CO368', 'v'),
-(4, '../upload_stu/Week7.pdf', 'sm@gmail.com', 'cr@gmail.com', 'CO368', 'v');
+(4, '../upload_stu/Week7.pdf', 'sm@gmail.com', 'cr@gmail.com', 'CO368', 'v'),
+(5, '../upload_stu/REPORT-A5-16CO138-16CO223.pdf', 's1@gmail.com', 'mishal@gmail.com', 'CO400', 'v'),
+(6, '../upload_stu/5-OpenMP.pdf', 'brc@gmail.com', 'stu@gmail.com', 'CO313', 'v');
 
 -- --------------------------------------------------------
 
@@ -302,12 +436,70 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `email`, `pass`, `mobile`, `programme`, `semester`, `gender`, `image`, `dob`, `regid`) VALUES
-(4, ' Hardik', 'hardikrana276@gmail.com', 'b4a4f9aab849447bef2b9b139e0c0bdd', 9900474592, 'B.Tech', 'v', 'Male', '19623512_1696191430690274_3589277299951796224_n(1).jpg', '1999-07-27', 2147483647),
+(4, ' Hardik Rana', 'hardikrana276@gmail.com', 'b4a4f9aab849447bef2b9b139e0c0bdd', 9900474592, 'B.Tech', 'vi', 'Male', '19623512_1696191430690274_3589277299951796224_n(1).jpg', '1999-07-27', 2147483647),
 (5, ' Himanshu', 'h@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, 'B.Tech', 'v', 'Male', '26166986_1052998068173129_5661887996364653062_n.jpg', '1111-11-11', 2147483647),
 (6, ' Bobby Patil', 'bobbypt05@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1122334455, 'B.Tech', 'v', 'Male', 'bobby.jpeg', '1111-11-11', 2147483647),
 (7, ' Chetan', 'cr@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 3332224445, 'B.Tech', 'v', 'Male', 'chetan.jpg', '1111-11-11', 2147483647),
 (8, ' Mishal', 'm@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, 'B.Tech', 'iii', 'Male', 'images.jpeg', '2018-11-14', 2147483647),
-(9, ' Shushant', 'sh@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 9900232323, 'B.Tech', 'v', 'Male', 'shushant.jpg', '1998-11-11', NULL);
+(12, ' Harshal Shinde', 'hsharshal9@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, 'B.Tech', 'vi', 'Male', '1faec3eacccd97a99b1fe7571c1f8a8f.jpg', '1998-09-09', NULL),
+(13, ' xyx', 'x@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 1112223334, 'B.Tech', 'vi', 'Male', 'big-sean-project1.jpg', '1999-11-11', NULL),
+(14, ' hoidk', 'hm@gmail.com', 'e10adc3949ba59abbe56e057f20f883e', 111111111111111, 'B.Tech', 'vi', 'Male', '1faec3eacccd97a99b1fe7571c1f8a8f.jpg', '1111-11-11', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role`
+--
+
+CREATE TABLE `user_role` (
+  `id` int(11) NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_role`
+--
+
+INSERT INTO `user_role` (`id`, `role_id`) VALUES
+(4, 1),
+(14, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role1`
+--
+
+CREATE TABLE `user_role1` (
+  `id` int(11) NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_role1`
+--
+
+INSERT INTO `user_role1` (`id`, `role_id`) VALUES
+(18, 2),
+(5, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user_role2`
+--
+
+CREATE TABLE `user_role2` (
+  `id` int(11) NOT NULL,
+  `role_id` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `user_role2`
+--
+
+INSERT INTO `user_role2` (`id`, `role_id`) VALUES
+(1, 3);
 
 --
 -- Indexes for dumped tables
@@ -339,10 +531,29 @@ ALTER TABLE `feedback`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `permissions`
+--
+ALTER TABLE `permissions`
+  ADD PRIMARY KEY (`perm_id`);
+
+--
 -- Indexes for table `question_table`
 --
 ALTER TABLE `question_table`
   ADD PRIMARY KEY (`Q_id`);
+
+--
+-- Indexes for table `roles`
+--
+ALTER TABLE `roles`
+  ADD PRIMARY KEY (`role_id`);
+
+--
+-- Indexes for table `role_perm`
+--
+ALTER TABLE `role_perm`
+  ADD KEY `role_id` (`role_id`),
+  ADD KEY `perm_id` (`perm_id`);
 
 --
 -- Indexes for table `uploads`
@@ -363,6 +574,27 @@ ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD KEY `user_id` (`id`),
+  ADD KEY `role_id` (`role_id`);
+
+--
+-- Indexes for table `user_role1`
+--
+ALTER TABLE `user_role1`
+  ADD KEY `id1` (`id`),
+  ADD KEY `role_id` (`role_id`);
+
+--
+-- Indexes for table `user_role2`
+--
+ALTER TABLE `user_role2`
+  ADD KEY `id` (`id`),
+  ADD KEY `role_id` (`role_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -376,43 +608,55 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `answers_table`
 --
 ALTER TABLE `answers_table`
-  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `answer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `faculty`
 --
 ALTER TABLE `faculty`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `feedback`
 --
 ALTER TABLE `feedback`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `permissions`
+--
+ALTER TABLE `permissions`
+  MODIFY `perm_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `question_table`
 --
 ALTER TABLE `question_table`
-  MODIFY `Q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `Q_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `role_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `uploads`
 --
 ALTER TABLE `uploads`
-  MODIFY `upload_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `upload_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `uploads_stu`
 --
 ALTER TABLE `uploads_stu`
-  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `upload_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- Constraints for dumped tables
@@ -423,6 +667,34 @@ ALTER TABLE `user`
 --
 ALTER TABLE `answers_table`
   ADD CONSTRAINT `answers_table_ibfk_1` FOREIGN KEY (`Q_id`) REFERENCES `question_table` (`Q_id`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `role_perm`
+--
+ALTER TABLE `role_perm`
+  ADD CONSTRAINT `role_perm_ibfk_1` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`),
+  ADD CONSTRAINT `role_perm_ibfk_2` FOREIGN KEY (`perm_id`) REFERENCES `permissions` (`perm_id`);
+
+--
+-- Constraints for table `user_role`
+--
+ALTER TABLE `user_role`
+  ADD CONSTRAINT `user_role_ibfk_1` FOREIGN KEY (`id`) REFERENCES `user` (`id`),
+  ADD CONSTRAINT `user_role_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`);
+
+--
+-- Constraints for table `user_role1`
+--
+ALTER TABLE `user_role1`
+  ADD CONSTRAINT `user_role1_ibfk_1` FOREIGN KEY (`id`) REFERENCES `faculty` (`id`),
+  ADD CONSTRAINT `user_role1_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`);
+
+--
+-- Constraints for table `user_role2`
+--
+ALTER TABLE `user_role2`
+  ADD CONSTRAINT `user_role2_ibfk_1` FOREIGN KEY (`id`) REFERENCES `admin` (`admin_id`),
+  ADD CONSTRAINT `user_role2_ibfk_2` FOREIGN KEY (`role_id`) REFERENCES `roles` (`role_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
